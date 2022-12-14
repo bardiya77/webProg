@@ -1,4 +1,7 @@
 @extends('admin.layouts.admin')
+@section('title')
+    dash board
+@endsection
 
 @section('script')
     <script>

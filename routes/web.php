@@ -13,7 +13,11 @@ use App\Http\Controllers\Admin\BrandController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', function () {
+    return view('admin.dashboard');
+})->name('dashboard');
 
+// ---------------------------------------
 Route::get('/admin-panel/dashboard', function () {
     return view('admin.dashboard');
 })->name('dashboard');
