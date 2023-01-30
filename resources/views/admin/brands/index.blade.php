@@ -1,10 +1,53 @@
 @extends('admin.layouts.admin')
 
 @section('title')
-     brands
+index brands
 @endsection
 
 @section('content')
 
-<h2>index brands</h2>
+<div class="col-xl-12 col-md-12 mb-4 p-md-5 bg-white">
+    <div class="d-flex justify-content-between mb-4">
+        <h5 class="font-weight-bold"> لیست برندها ({{$brands->total()}})</h5>
+        <a class="btn btn-sm btn-outline-primary" href={{route('admin.brands.create')}}>
+            <i class="fa fa-plus">ایجاد برند</i>
+        </a>
+    </div>
+
+    <div>
+        <table class="table table-bordered table-striped text-center">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>نام</th>
+                    <th>وضیعت</th>
+                    <th>عملیات</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach ($brands as $key=> $brand)
+                <tr>
+
+                    <th>{{$brands->firstItem() + $key}}</th>
+                    <th>{{$brand->name}}</th>
+                    <th>
+                        <span class="{{ $brand->getRawOriginal('is_active') ? 'text-success' : 'text-danger' ; }}">
+                            {{$brand->is_active}}
+                        </span>
+                    </th>
+
+                    <th>#</th>
+
+                </tr>
+                @endforeach
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
 @endsection

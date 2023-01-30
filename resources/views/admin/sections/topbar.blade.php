@@ -189,8 +189,8 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-                <span class="ml-2 d-none d-lg-inline text-gray-600 small"> علی شیخ </span>
-                <img class="img-profile rounded-circle" src="./img/user.jpg">
+                <span class="ml-2 d-none d-lg-inline text-gray-600 small">  بردیا پورعلی </span>
+                <img class="img-profile rounded-circle" src={{asset('/img/user.jpg')}}>
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in text-right"
