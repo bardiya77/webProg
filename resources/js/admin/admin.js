@@ -3,6 +3,7 @@ require('bootstrap/dist/js/bootstrap.bundle');
 require('jquery.easing');
 require('chart.js');
 
+
 (function($) {
     "use strict"; // Start of use strict
 

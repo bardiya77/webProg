@@ -15,7 +15,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands = Brand::latest()->paginate(20);
+        return view('admin.brands.index' , compact('brands'));
     }
 
     /**
@@ -40,6 +41,7 @@ class BrandController extends Controller
             'is_active'=>$request->is_active,
         ]);
 
+        alert()->success('برند مورد نظر ثبت شد', 'باتشکر');
         return redirect()->route('admin.brands.index');
     }
 
