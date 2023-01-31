@@ -38,7 +38,9 @@ index brands
                         </span>
                     </th>
 
-                    <th>#</th>
+                    <th>
+                        <a class="btn btn-outline-dark btn-sm" href="{{route('admin.brands.show',['brand'=>$brand->id])}}">نمایش</a>
+                    </th>
 
                 </tr>
                 @endforeach

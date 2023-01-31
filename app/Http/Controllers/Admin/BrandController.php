@@ -41,13 +41,13 @@ class BrandController extends Controller
             'is_active'=>$request->is_active,
         ]);
 
-        alert()->success('برند مورد نظر ثبت شد', 'باتشکر');
+        alert()->success('برند مورد نظر ایجاد شد', 'باتشکر');
         return redirect()->route('admin.brands.index');
     }
 
-    public function show($id)
+    public function show(Brand $brand)
     {
-        //
+        return view('admin.brands.show' , compact('brand'));
     }
 
 
