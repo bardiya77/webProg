@@ -40,6 +40,7 @@ index brands
 
                     <th>
                         <a class="btn btn-outline-dark btn-sm" href="{{route('admin.brands.show',['brand'=>$brand->id])}}">نمایش</a>
+                        <a class="btn btn-outline-info btn-sm mr-3" href="{{route('admin.brands.edit',['brand'=>$brand->id])}}">ویرایش</a>
                     </th>
 
                 </tr>
