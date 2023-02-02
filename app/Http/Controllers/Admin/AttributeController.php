@@ -41,27 +41,26 @@ class AttributeController extends Controller
         return view('admin.attributes.show' , compact('attribute'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+   
+    public function edit(Attribute $attribute)
     {
-        //
+      
+        return view('admin.attributes.edit' , compact('attribute'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+   
+    public function update(Request $request, Attribute $attribute)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $attribute->update([
+            'name' => $request->name,
+        ]);
+
+        alert()->success('برند مورد نظر ویرایش شد', 'باتشکر');
+        return redirect()->route('admin.attributes.index');
     }
 
     /**
