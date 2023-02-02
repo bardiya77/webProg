@@ -11,7 +11,8 @@ class AttributeController extends Controller
   
     public function index()
     {
-        //
+        $attributes = Attribute::latest()->paginate(20);
+        return view('admin.attributes.index' , compact('attributes'));
     }
 
     public function create()
@@ -34,15 +35,10 @@ class AttributeController extends Controller
         return redirect()->route('admin.attributes.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+   
+    public function show(Attribute $attribute)
     {
-        //
+        return view('admin.attributes.show' , compact('attribute'));
     }
 
     /**
