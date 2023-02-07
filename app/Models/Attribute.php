@@ -9,6 +9,12 @@ class Attribute extends Model
 {
     use HasFactory;
 
-    protected $table="attributes";
-    protected $guarded=[];
+    protected $table = "attributes";
+    protected $guarded = [];
+
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'attribute_category');
+    }
 }

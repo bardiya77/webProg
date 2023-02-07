@@ -10,6 +10,51 @@ create category
         'title': 'انتخاب ویژگی'
     });
 
+    $('#attributeSelect').on('changed.bs.select', function() {
+        let attributesSelected = $(this).val();
+        let attributes = @json($attributes);
+
+        let attributeForFilter = [];
+
+        attributes.map((attribute) => {
+            $.each(attributesSelected , function(i,element){
+                if( attribute.id == element ){
+                    attributeForFilter.push(attribute);
+                }
+            });
+        });
+
+        $("#attributeIsFilterSelect").find("option").remove();
+        $("#variationSelect").find("option").remove();
+        attributeForFilter.forEach((element)=>{
+            let attributeFilterOption = $("<option/>" , {
+                value : element.id,
+                text : element.name
+            });
+
+            let variationOption = $("<option/>" , {
+                value : element.id,
+                text : element.name
+            });
+
+            $("#attributeIsFilterSelect").append(attributeFilterOption);
+            $("#attributeIsFilterSelect").selectpicker('refresh');
+
+            $("#variationSelect").append(variationOption);
+            $("#variationSelect").selectpicker('refresh');
+        });
+
+
+    });
+
+    $("#attributeIsFilterSelect").selectpicker({
+        'title': 'انتخاب ویژگی'
+    });
+
+    $("#variationSelect").selectpicker({
+        'title': 'انتخاب ویژگی'
+    });
+
 </script>
 @endsection
 
@@ -60,14 +105,38 @@ create category
                 </div>
 
                 <div class="form-group col-md-3">
-                    <label for="is_active">ویژگی</label>
-                    <select id="attributeSelect" name="attribute_ids[]" class="form-control" multiple data-live-search="true">
+                    <label for="attribute_ids">ویژگی</label>
+                    <select id="attributeSelect" name="attribute_ids[]" class="form-control" multiple
+                        data-live-search="true">
                         @foreach ($attributes as $attribute)
-                            <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
+                        <option value="{{ $attribute->id }}">{{ $attribute->name }}</option>
                         @endforeach
                     </select>
                 </div>
 
+                <div class="form-group col-md-3">
+                    <label for="attribute_is_filter_ids">انتخاب ویژگی های قابل فیلتر</label>
+                    <select id="attributeIsFilterSelect" name="attribute_is_filter_ids[]" class="form-control" multiple
+                        data-live-search="true">
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="attribute_is_filter_ids">انتخاب ویژگی متغیر</label>
+                    <select id="variationSelect" name="variation_id" class="form-control" data-live-search="true">
+                    </select>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label for="icon">آیکون</label>
+                    <input class="form-control" id="icon" name="icon" type="text" value="{{ old('icon') }}">
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label for="description">توضیحات</label>
+                    <textarea class="form-control" id="description"
+                        name="description">{{ old('description') }}</textarea>
+                </div>
 
             </div>
 
