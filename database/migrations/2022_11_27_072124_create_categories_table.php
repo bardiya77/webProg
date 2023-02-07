@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('parend_id')->default(0);
             $table->string('name');
             $table->string('slag')->unique()->nullable();
             $table->text('description')->nullable();
