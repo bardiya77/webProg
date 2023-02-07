@@ -24,7 +24,7 @@ class CategoryController extends Controller
         $attributes=Attribute::all();
        return view('admin.categories.create',compact('parentCategories','attributes'));
     }
-
+    
   
     public function store(Request $request)
     {
