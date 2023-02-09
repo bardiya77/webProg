@@ -52,7 +52,7 @@ create category
     });
 
     $("#variationSelect").selectpicker({
-        'title': 'انتخاب ویژگی'
+        'title': 'انتخاب دسته بندی'
     });
 
 </script>

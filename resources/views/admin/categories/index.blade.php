@@ -8,7 +8,7 @@ index categories
 
 <div class="col-xl-12 col-md-12 mb-4 p-md-5 bg-white">
     <div class="d-flex justify-content-between mb-4">
-        <h5 class="font-weight-bold"> لیست دسته بندی ها </h5>
+        <h5 class="font-weight-bold">لیست دسته بندی ها ({{ $categories->total() }})</h5>
         <a class="btn btn-sm btn-outline-primary" href={{route('admin.categories.create')}}>
             <i class="fa fa-plus">ایجاد دسته بندی</i>
         </a>
@@ -40,7 +40,7 @@ index categories
                     <th>{{$category->slug}}</th>
                     <th>
                         @if ($category->parent_id == 0)
-                        {{ $category->name }}
+                        بدون والد
                         @else
                         {{ $category->parent->name }}
                         @endif
