@@ -6,18 +6,14 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('parend_id')->default(0);
+            $table->unsignedInteger('parent_id')->default(0);
             $table->string('name');
-            $table->string('slag')->unique()->nullable();
+            $table->string('slug')->unique()->nullable();
             $table->text('description')->nullable();
             $table->boolean('is_active')->default(1);
             $table->text('icon')->nullable();
@@ -25,11 +21,7 @@ return new class extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+   
     public function down()
     {
         Schema::dropIfExists('categories');

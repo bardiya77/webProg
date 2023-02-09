@@ -75,21 +75,21 @@ create category
             <div class="form-row">
                 <div class="form-group col-md-3">
                     <label for="name">نام </label>
-                    <input class="form-control" id="name" name="name" type="text">
+                    <input class="form-control" id="name" name="name" type="text" value="{{old('name')}}">
                 </div>
 
 
 
                 <div class="form-group col-md-3">
-                    <label for="slut">نام انگلیسی</label>
-                    <input class="form-control" id="slut" name="slut" type="text">
+                    <label for="slug">نام انگلیسی</label>
+                    <input class="form-control" id="slug" name="slug" type="text" value="{{old('slug')}}">
                 </div>
 
 
                 <div class="form-group col-md-3">
                     <label for="parent_id">والد</label>
                     <select class="form-control" id="parent_id" name="parent_id">
-                        <option value="1" selected>بدون والد</option>
+                        <option value="0" selected>بدون والد</option>
                         @foreach ($parentCategories as $parentCategory)
                         <option value="{{$parentCategory->id}}">{{$parentCategory->name}}</option>
                         @endforeach
