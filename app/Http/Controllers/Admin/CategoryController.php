@@ -13,9 +13,8 @@ class CategoryController extends Controller
    
     public function index()
     {
-        $parentCategories=Category::where('parent_id',0)->get();
-        $attributes=Attribute::all();
-       return view('admin.categories.index',compact('parentCategories','attributes'));
+        $categories = Category::latest()->paginate(20);
+        return view('admin.categories.index' , compact('categories'));
     }
 
    
