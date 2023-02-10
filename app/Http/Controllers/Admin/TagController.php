@@ -43,15 +43,24 @@ class TagController extends Controller
     }
 
     
-    public function edit($id)
+    public function edit(Tag $tag)
     {
-        //
+        return view('admin.tags.edit' , compact('tag'));
     }
 
    
-    public function update(Request $request, $id)
+    public function update(Request $request, Tag $tag)
     {
-        //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $tag->update([
+            'name' => $request->name,
+        ]);
+
+        alert()->success('تگ مورد نظر ویرایش شد', 'باتشکر');
+        return redirect()->route('admin.tags.index');
     }
 
   
