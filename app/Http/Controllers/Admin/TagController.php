@@ -37,9 +37,9 @@ class TagController extends Controller
     }
 
    
-    public function show($id)
+    public function show(Tag $tag)
     {
-        //
+        return view('admin.tags.show' , compact('tag'));
     }
 
     
