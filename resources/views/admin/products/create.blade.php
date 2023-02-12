@@ -32,13 +32,17 @@
             'title': 'انتخاب دسته بندی'
         });
 
+        $('#attributesContainer').hide();
+
         $('#categorySelect').on('changed.bs.select', function() {
             let categoryId = $(this).val();
 
             $.get(`{{ url('/admin-panel/management/category-attributes/${categoryId}') }}`, function(response,
                 status) {
                 if (status == 'success') {
-                    // console.log(response.attrubtes);
+                    // console.log(response);
+
+                    $('#attributesContainer').fadeIn();
 
                     // Empty Attribute Container
                     $('#attributes').find('div').remove();
@@ -55,15 +59,16 @@
 
                         attributeFormGroup.append($('<input/>', {
                             type: 'text',
-                            class : 'form-control',
-                            id : attribute.name,
-                            name : `attribute_ids[${attribute.id}]`
+                            class: 'form-control',
+                            id: attribute.name,
+                            name: `attribute_ids[${attribute.id}]`
                         }));
 
                         $('#attributes').append(attributeFormGroup);
 
                     });
 
+                    $('#variationName').text(response.variation.name);
 
                 } else {
                     alert('مشکل در دریافت لیست ویژگی ها');
@@ -74,6 +79,8 @@
 
             // console.log(categoryId);
         });
+
+        $("#czContainer").czMore();
 
     </script>
 @endsection
@@ -177,9 +184,54 @@
 
                     <div id="attributesContainer" class="col-md-12">
                         <div id="attributes" class="row"></div>
+                        <div class="col-md-12">
+                            <hr>
+                            <p>افزودن قیمت و موجودی برای متغیر <span class="font-weight-bold" id="variationName"></span> :
+                            </p>
+                        </div>
+
+                        <div id="czContainer">
+                            <div id="first">
+                                <div class="recordset">
+                                    <div class="row">
+                                        <div class="form-group col-md-3">
+                                            <label>نام</label>
+                                            <input class="form-control" name="variation_values[value][]" type="text">
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label>قیمت</label>
+                                            <input class="form-control" name="variation_values[price][]" type="text">
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label>تعداد</label>
+                                            <input class="form-control" name="variation_values[quantity][]" type="text">
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <label>شناسه انبار</label>
+                                            <input class="form-control" name="variation_values[sku][]" type="text">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
+                    {{-- Delivery Section --}}
+                    <div class="col-md-12">
+                        <hr>
+                        <p>هزینه ارسال : </p>
+                    </div>
 
+                    <div class="form-group col-md-3">
+                        <label for="delivery_amount">هزینه ارسال</label>
+                        <input class="form-control" id="delivery_amount" name="delivery_amount" type="text" {{ old('delivery_amount') }}>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="delivery_amount_per_product">هزینه ارسال به ازای محصول اضافی</label>
+                        <input class="form-control" id="delivery_amount_per_product" name="delivery_amount_per_product" type="text" {{ old('delivery_amount_per_product') }}>
+                    </div>
 
                 </div>
 
