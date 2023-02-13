@@ -11,4 +11,13 @@ class Product extends Model
 
     protected $table="products";
     protected $guarded=[];
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 }
