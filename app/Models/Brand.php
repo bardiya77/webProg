@@ -13,7 +13,7 @@ class Brand extends Model
     protected $guarded=[];
 
 
-    public function sluggable(): array
+    public function sluggable():array
     {
         return [
             'slug' => [

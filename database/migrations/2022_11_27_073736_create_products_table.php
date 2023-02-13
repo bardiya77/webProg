@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreignId('category_id');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
 
-            $table->string('slag')->unique();
+            $table->string('slug')->unique();
             $table->string('primary_image');
             $table->text('description');
             $table->integer('status')->default(1);
