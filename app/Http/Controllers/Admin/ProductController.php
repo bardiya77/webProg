@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class ProductController extends Controller
 {
@@ -30,7 +31,7 @@ class ProductController extends Controller
     {
         // dd($request->all());
 
-
+        /*
         $request->validate([
             'name' => 'required',
             'brand_id' => 'required',
@@ -50,8 +51,13 @@ class ProductController extends Controller
             'delivery_amount' => 'required|integer',
             'delivery_amount_per_product' => 'nullable|integer',
         ]);
+*/
 
-        dd('Done!');
+        
+
+        $fileNameImagePrimary=generateFileName($request->primary_image->getClientOriginalName());
+
+        $request->primary_image->move(public_path(env('PRODUCT_IMAGES_UPLOAD_PATH')) , $fileNameImagePrimary);
     }
 
 

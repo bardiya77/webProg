@@ -2,17 +2,6 @@
 
 return [
 
-    /*
-    |--------------------------------------------------------------------------
-    | Validation Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines contain the default error messages used by
-    | the validator class. Some of these rules have multiple versions such
-    | as the size rules. Feel free to tweak each of these messages here.
-    |
-    */
-
     'accepted'             => ':attribute باید پذیرفته شده باشد.',
     'active_url'           => 'آدرس :attribute معتبر نیست',
     'after'                => ':attribute باید تاریخی بعد از :date باشد.',
@@ -99,20 +88,11 @@ return [
     |
     */
 
-    'custom' => [
-        
-    ],
+    'custom' => [],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Custom Validation Attributes
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used to swap attribute place-holders
-    | with something more reader friendly such as E-Mail Address instead
-    | of "email". This simply helps us make messages a little cleaner.
-    |
-    */
+    
+   // Custom Validation Attributes
+    
 
     'attributes'           => [
         'name'                  => 'نام',
@@ -158,9 +138,15 @@ return [
         'latitude'              => 'عرض جغرافیایی',
         'brand_id'              => 'برند',
         'tag_ids'               => 'تگ ها',
-        'slug'  =>'نام انگلیسی',
-        ''=>'',
-        
+        'slug'                  => 'نام انگلیسی',
+        'primary_image'         => 'تصویر اصلی',
+        'images'                => 'تصاویر',
+        'delivery_amount'       => 'هزینه ارسال',
+        'category_id'           => 'دسته بندی',
+        'variation_values'      => 'افزودن قیمت و موجودی  ',
+        'attribute_ids'         => 'ویژگی های دسته بندی',
+        'attribute_ids.*'       => ' ویژگی دسته بندی',
+        '' => '',
     ],
 
 ];
