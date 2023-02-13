@@ -156,6 +156,11 @@ return [
         'newpassword_confirmation' => 'تکرار رمز عبور جدید',
         'longitude'             => 'طول جغرافیایی',
         'latitude'              => 'عرض جغرافیایی',
+        'brand_id'              => 'برند',
+        'tag_ids'               => 'تگ ها',
+        'slug'  =>'نام انگلیسی',
+        ''=>'',
+        
     ],
 
 ];
