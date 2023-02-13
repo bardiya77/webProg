@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Carbon\Carbon;
 use App\Models\Tag;
 use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
+use App\Http\Controllers\Admin\ProductImageController;
 
 class ProductController extends Controller
 {
@@ -52,12 +53,13 @@ class ProductController extends Controller
             'delivery_amount_per_product' => 'nullable|integer',
         ]);
 */
+        $ProductImageController=new ProductImageController();
+        $fileNamePrimaryImage = $ProductImageController->upload($request->primary_image,$request->images);
 
-        
 
-        $fileNameImagePrimary=generateFileName($request->primary_image->getClientOriginalName());
 
-        $request->primary_image->move(public_path(env('PRODUCT_IMAGES_UPLOAD_PATH')) , $fileNameImagePrimary);
+
+        dd($fileNamePrimaryImage);
     }
 
 
