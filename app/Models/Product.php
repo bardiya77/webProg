@@ -29,4 +29,19 @@ class Product extends Model
     {
         return $this->belongsToMany(Tag::class, 'product_tag');
     }
+
+    public function brand()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function getIsActiveAttribute($is_active)
+    {
+        return $is_active? 'فعال' : 'غیرفعال' ;
+    }
 }
