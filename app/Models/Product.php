@@ -44,4 +44,19 @@ class Product extends Model
     {
         return $is_active? 'فعال' : 'غیرفعال' ;
     }
+
+    public function attributes()
+    {
+        return $this->hasMany(ProductAttribute::class);
+    }
+
+    public function variations()
+    {
+        return $this->hasMany(ProductVariation::class);
+    }
+
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class);
+    }
 }
