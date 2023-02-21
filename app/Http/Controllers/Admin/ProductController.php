@@ -111,9 +111,11 @@ class ProductController extends Controller
     }
 
 
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        $brands = Brand::all();
+        $tags = Tag::all();
+        return view('admin.products.edit', compact('product', 'brands', 'tags'));
     }
 
 
