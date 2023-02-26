@@ -5,6 +5,9 @@ require('chart.js');
 require('bootstrap-select');
 require('bootstrap-select/dist/js/i18n/defaults-fa_IR');
 require('./files/jquery.czMore-latest');
+// require('md.bootstrappersiandatetimepicker/dist/mds.bs.datetimepicker.js');  didn't work
+require('md.bootstrappersiandatetimepicker/dist/jquery.md.bootstrap.datetimepicker.js');
+
 
 (function($) {
     "use strict"; // Start of use strict

@@ -115,7 +115,10 @@ class ProductController extends Controller
     {
         $brands = Brand::all();
         $tags = Tag::all();
-        return view('admin.products.edit', compact('product', 'brands', 'tags'));
+        $productAttributes = $product->attributes()->with('attribute')->get();
+        $productVariations = $product->variations;
+
+        return view('admin.products.edit', compact('product', 'brands', 'tags','productAttributes','productVariations'));
     }
 
 

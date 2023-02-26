@@ -9,6 +9,9 @@
 // Import Bootstrap-select
 @import "~bootstrap-select/sass/bootstrap-select.scss";
 
+// Import md.bootstrappersiandatetimepicker
+// @import "~md.bootstrappersiandatetimepicker/dist/mds.bs.datetimepicker.style.css";  didn't work
+@import "~md.bootstrappersiandatetimepicker/dist/jquery.md.bootstrap.datetimepicker.style.css";
 
 
 // Import Custom SB Admin 2 Mixins and Components
@@ -121,4 +124,8 @@ body {
 
 a{
   text-decoration: none;
+}
+
+.mds-bootstrap-persian-datetime-picker-popover{
+  max-width: fit-content !important;
 }

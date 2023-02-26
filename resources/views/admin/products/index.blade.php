@@ -53,7 +53,7 @@
                                 <th>
                                     <span
                                         class="{{ $product->getRawOriginal('is_active') ? 'text-success' : 'text-danger' }}">
-                                        {{ $product->is_active}}
+                                        {{ $product->is_active }}
                                     </span>
                                 </th>
                                 <th>
@@ -64,7 +64,7 @@
                                         </button>
                                         <div class="dropdown-menu">
 
-                                            <a href="{{ route('admin.products.edit' , ['product' => $product->id])}}"
+                                            <a href="{{ route('admin.products.edit' , ['product' => $product->id]) }}"
                                                 class="dropdown-item text-right"> ویرایش محصول </a>
 
                                             <a href="#"
