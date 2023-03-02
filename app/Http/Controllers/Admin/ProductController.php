@@ -19,8 +19,8 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products=Product::latest()->paginate(20);
-        return view('admin.products.index',compact('products'));
+        $products = Product::latest()->paginate(20);
+        return view('admin.products.index', compact('products'));
     }
 
 
@@ -106,8 +106,7 @@ class ProductController extends Controller
         $productVariations = $product->variations;
         $images = $product->images;
 
-        return view('admin.products.show', compact('product', 'productAttributes', 'productVariations' , 'images'));
-  
+        return view('admin.products.show', compact('product', 'productAttributes', 'productVariations', 'images'));
     }
 
 
@@ -118,7 +117,7 @@ class ProductController extends Controller
         $productAttributes = $product->attributes()->with('attribute')->get();
         $productVariations = $product->variations;
 
-        return view('admin.products.edit', compact('product', 'brands', 'tags','productAttributes','productVariations'));
+        return view('admin.products.edit', compact('product', 'brands', 'tags', 'productAttributes', 'productVariations'));
     }
 
 
@@ -179,4 +178,14 @@ class ProductController extends Controller
         //
     }
 
+    public function EditCategory(Product $product, Request $request)
+    {
+        $categories=Category::where('parent_id','=!',0);
+    return view('admin.products.edit_category',compact('product','categories'));
+    }
+
+    public function UpdateCategory(Product $product, Request $request)
+    {
+    dd($request);
+    }
 }
