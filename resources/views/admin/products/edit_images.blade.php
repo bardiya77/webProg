@@ -62,7 +62,7 @@
                             <img class="card-img-top" src="{{ url(env('PRODUCT_IMAGES_UPLOAD_PATH') . $image->image) }}"
                                 alt="{{ $product->name }}">
                             <div class="card-body text-center">
-                                <form action="{{ route('admin.products.images.destroy') }}" method="post">
+                                <form action="{{ route('admin.products.images.destroy',['product' => $product->id]) }}" method="post">
                                     @method('DELETE')
                                     @csrf
                                     <input type="hidden" name="image_id" value="{{ $image->id }}">
