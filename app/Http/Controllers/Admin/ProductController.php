@@ -178,14 +178,51 @@ class ProductController extends Controller
         //
     }
 
-    public function EditCategory(Product $product, Request $request)
+    public function editCategory(Product $product, Request $request)
     {
-        $categories=Category::where('parent_id','=!',0);
+        $categories = Category::where('parent_id','!=',0)->get();
     return view('admin.products.edit_category',compact('product','categories'));
     }
 
-    public function UpdateCategory(Product $product, Request $request)
+  
+        // $categories = Category::where('parent_id', '!=', 0)->get();
+        // return view('admin.products.edit_category', compact('product' , 'categories'));
+    
+
+    public function updateCategory(Request $request, Product $product)
     {
-    dd($request);
+        // dd($request->all());
+        $request->validate([
+            'category_id' => 'required',
+            'attribute_ids' => 'required',
+            'attribute_ids.*' => 'required',
+            'variation_values' => 'required',
+            'variation_values.*.*' => 'required',
+            'variation_values.price.*' => 'integer',
+            'variation_values.quantity.*' => 'integer'
+        ]);
+        try {
+            DB::beginTransaction();
+
+            $product->update([
+                'category_id' => $request->category_id
+            ]);
+
+            $productAttributeController = new ProductAttributeController();
+            $productAttributeController->change($request->attribute_ids, $product);
+
+            $category = Category::find($request->category_id);
+            $productVariationController = new ProductVariationController();
+            $productVariationController->change($request->variation_values, $category->attributes()->wherePivot('is_variation', 1)->first()->id, $product);
+
+            DB::commit();
+        } catch (\Exception $ex) {
+            DB::rollBack();
+            alert()->error('مشکل در ایجاد محصول', $ex->getMessage())->persistent('حله');
+            return redirect()->back();
+        }
+
+        alert()->success('محصول مورد نظر ایجاد شد', 'باتشکر');
+        return redirect()->route('admin.products.index');
     }
 }
