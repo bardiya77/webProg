@@ -6,12 +6,14 @@ index attributes
 
 @section('content')
 
-<div class="col-xl-12 col-md-12 mb-4 p-md-5 bg-white">
-    <div class="d-flex justify-content-between mb-4">
-        <h5 class="font-weight-bold"> لیست ویژگی ها ({{$attributes->total()}})</h5>
-        <a class="btn btn-sm btn-outline-primary" href={{route('admin.attributes.create')}}>
+<div class="col-xl-12 col-md-12 mb-4 p-4 bg-white">
+    <div class="d-flex flex-column flex-md-row text-center justify-content-md-between mb-4">
+        <h5 class="font-weight-bold mb-3"> لیست ویژگی ها ({{$attributes->total()}})</h5>
+      <div>
+        <a class="btn btn-sm btn-outline-primary " href={{route('admin.attributes.create')}}>
             <i class="fa fa-plus">ایجاد ویژگی</i>
         </a>
+      </div>
     </div>
 
     <div>
