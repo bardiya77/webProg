@@ -41,17 +41,17 @@
 
                     <div class="form-group col-md-3">
                         <label for="title">عنوان</label>
-                        <input class="form-control" id="title" name="title" type="text" {{ old('title') }}>
+                        <input class="form-control" id="title" name="title" type="text" value=" {{old('title') }}">
                     </div>
 
                     <div class="form-group col-md-3">
                         <label for="text">متن</label>
-                        <input class="form-control" id="text" name="text" type="text" {{ old('text') }}>
+                        <input class="form-control" id="text" name="text" type="text" value="{{ old('text') }}">
                     </div>
 
                     <div class="form-group col-md-3">
                         <label for="priority">الویت</label>
-                        <input class="form-control" id="priority" name="priority" type="number" {{ old('priority') }}>
+                        <input class="form-control" id="priority" name="priority" type="number" value="{{ old('priority') }}">
                     </div>
 
                     <div class="form-group col-md-3">
@@ -69,17 +69,17 @@
 
                     <div class="form-group col-md-3">
                         <label for="button_text">متن دکمه</label>
-                        <input class="form-control" id="button_text" name="button_text" type="text" {{ old('button_text') }}>
+                        <input class="form-control" id="button_text" name="button_text" type="text" value="{{ old('button_text') }}">
                     </div>
 
                     <div class="form-group col-md-3">
                         <label for="button_link">لینک دکمه</label>
-                        <input class="form-control" id="button_link" name="button_link" type="text" {{ old('button_link') }}>
+                        <input class="form-control" id="button_link" name="button_link" type="text" value="{{ old('button_link') }}">
                     </div>
 
                     <div class="form-group col-md-3">
                         <label for="button_icon">آیکون دکمه</label>
-                        <input class="form-control" id="button_icon" name="button_icon" type="text" {{ old('button_icon') }}>
+                        <input class="form-control" id="button_icon" name="button_icon" type="text" value="{{ old('button_icon') }}">
                     </div>
 
 

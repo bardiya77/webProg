@@ -59,18 +59,46 @@ return redirect()->route('admin.banners.index');
     }
 
   
-    public function edit($id)
+    public function edit(Banner $banner)
     {
-        //
+         return view('admin.banners.edit',compact('banner'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Banner $banner)
     {
-        //
+        $request->validate([
+            'image' => 'nullable|mimes:jpg,jpeg,png,svg',
+            'priority' => 'required|integer',
+            'type' => 'required'
+        ]);
+
+        if ($request->has('image')) {
+            $fileNameImage = generateFileName($request->image->getClientOriginalName());
+            $request->image->move(public_path(env('BANNER_IMAGES_UPLOAD_PATH')), $fileNameImage);
+        }
+
+        $banner->update([
+            'image' => $request->has('image') ? $fileNameImage : $banner->image,
+            'title' => $request->title,
+            'text' => $request->text,
+            'priority' => $request->priority,
+            'is_active' => $request->is_active,
+            'type' => $request->type,
+            'button_text' => $request->button_text,
+            'button_link' => $request->button_link,
+            'button_icon' => $request->button_icon,
+        ]);
+
+        alert()->success('بنر مورد نظر ویرایش شد', 'باتشکر');
+        return redirect()->route('admin.banners.index');
     }
 
-    public function destroy($id)
+   
+    public function destroy(Banner $banner)
     {
-        //
+        $banner->delete();
+
+        alert()->success('بنر مورد نظر حذف شد', 'باتشکر');
+        return redirect()->route('admin.banners.index');
     }
 }

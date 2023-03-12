@@ -76,11 +76,11 @@
                                 </th>
 
                                 <th>
-                                    <form action="{{ route('admin.banners.destroy', ['banner' => $banner->id]) }}">
+                                    <form action="{{ route('admin.banners.destroy', ['banner' => $banner->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
 
-                                        <button class="btn btn-sm btn-outline-danger" type="submit">حذف</button>
+                                        <button class="btn btn-sm btn-outline-danger" type="submit" >حذف</button>
                                     </form>
                                     <a class="btn btn-sm btn-outline-info mr-3 mt-2"
                                         href="{{ route('admin.banners.edit', ['banner' => $banner->id]) }}">ویرایش</a>
