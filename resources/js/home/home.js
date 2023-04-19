@@ -1,6 +1,7 @@
 require("bootstrap/dist/js/bootstrap.bundle");
 require("sweetalert");
-
+require('../home/jquery-1.12.4.min.js');
+require('../home/plugins.js');
 (function ($) {
     "use strict";
 

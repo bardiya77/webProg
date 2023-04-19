@@ -18,9 +18,12 @@
 </head>
 
 <body>
+    @include('home.sections.header')
+    @include('home.sections.mobile-off-canvas')
 
     @yield('content')
-
+    
+    @include('home.sections.footer')
 
     <!-- JavaScript-->
     <script src="{{ asset('/js/home/jquery-1.12.4.min.js') }}"></script>
